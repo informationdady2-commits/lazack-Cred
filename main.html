@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="32x32" href="https://imgur.com/0WdquLe">
   <link rel="shortcut icon" type="x-icon" href="./img/bg.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8601119118897825"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8601119118897825" crossorigin="anonymous"></script>
   <style>
     body {
       display: flex;
@@ -42,13 +41,24 @@
       font-size: 2.5em;
       margin-bottom: 20px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 0.5s; /* Delay for the welcome message */
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .btn {
       width: 220px;
       padding: 15px;
       margin: 10px 0;
-      background-color: #28a745;
+      background-color: #1e3a78; /* Blue-black color */
       border: none;
       border-radius: 5px;
       font-size: 18px;
@@ -58,10 +68,18 @@
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       color: white;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
+    }
+
+    .btn.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .btn:hover {
-      background-color: #218838;
+      background-color: #0f2a5b; /* Darker shade on hover */
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
     }
@@ -69,6 +87,17 @@
     .btn:active {
       transform: translateY(1px);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Footer styles */
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      opacity: 0.7;
     }
 
     /* Responsive adjustments */
@@ -82,9 +111,7 @@
       }
     }
   </style>
-  <script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-  </script>
+  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 </head>
 <body>
   <amp-auto-ads type="adsense" data-ad-client="ca-pub-8601119118897825"></amp-auto-ads>
@@ -96,12 +123,33 @@
       </video>
   </div>
 
-  <h1>Welcome to our Pairing Page</h1>
-  <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
-  <button onclick="window.open(`https://github.com/Lazack28`)" class="btn">Lazack</button>
-  <button onclick="window.open(`https://github.com/SilvaTechB`)" class="btn">Silva</button>
-  <button onclick="window.open(`https://t.me/hackersreality`)" class="btn">Telegram</button>
-  <button onclick="window.open(`https://chat.whatsapp.com/`)" class="btn">Group</button>
+  <h1>Welcome to our Pairing Page </h1>
 
+  <div id="button-container">
+    <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
+    <button onclick="window.open(`https://github.com/Lazack28`)" class="btn">Lazack</button>
+    <button onclick="window.open(`https://github.com/SilvaTechB`)" class="btn">Silva</button>
+    <button onclick="window.open(`https://t.me/hackersreality`)" class="btn">Telegram</button>
+    <button onclick="window.open(`https://chat.whatsapp.com/`)" class="btn">Group</button>
+  </div>
+
+  <footer>
+    Lazack Devs
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.btn');
+    const welcomeMessageDuration = 10000; // 10 seconds
+    const buttonDisplayInterval = 3000; // 3 seconds
+
+    // Show welcome message for 10 seconds
+    setTimeout(() => {
+      buttons.forEach((button, index) => {
+        setTimeout(() => {
+          button.classList.add('visible');
+        }, index * buttonDisplayInterval);
+      });
+    }, welcomeMessageDuration);
+  </script>
 </body>
 </html>
