@@ -9,7 +9,7 @@
     "start": "node pair.js"
   },
   "dependencies": {
-    "@whiskeysockets/baileys":  "npm:@manul-ofc-baileys-new@1.0.0",
+    "@whiskeysockets/baileys":  "npm:@fizzxydev/baileys-pro@8.5.12",
     "qrcode": "^1.5.3",
     "awesome-phonenumber": "^2.64.0",
     "pino": "^8.1.0",
