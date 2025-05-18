@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/016e29eeceab76949bdc3.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pair Code</title>
+  <title>Lazack Organization Creds Generator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8601119118897825"
-     crossorigin="anonymous"></script>
   <style>
     body {
       display: flex;
@@ -15,276 +13,221 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-image: url("https://telegra.ph/file/de73985932bc1d816c0a6.jpg");
-      font-family: Arial, sans-serif;
-      position: relative;
-    }
-
-    /* Animated text styles */
-    .marquee {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      font-weight: bold;
-      z-index: 10;
+      background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+      font-family: 'Roboto', sans-serif;
+      color: #f1f1f1;
       overflow: hidden;
-    }
-
-    .marquee-content {
-      display: inline-block;
-      white-space: nowrap; /* Prevent text wrapping */
-      animation: marquee 10s linear infinite;
-    }
-
-    @keyframes marquee {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    /* Video background */
-    .video-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
     }
 
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+      transition: transform 0.3s;
+      max-width: 500px;
+      width: 90%;
     }
 
-    .box {
-      width: 300px;
-      height: 320px;
-      padding: 20px;
-      position: relative;
+    .container:hover {
+      transform: scale(1.05);
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #00bcd4;
+      margin: 0;
       text-align: center;
-      background-color: rgb(0, 0, 0);
-      opacity: 0.8;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(250, 249, 249, 0.7);
+      text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
     }
 
-    #text {
-      color: #f6f5f5;
-    }
-
-    .input-container input {
-      color: #f1eaea;
-    }
-
-    .centered-text {
-      color: #e9e4e4;
+    h6 {
+      font-size: 1rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     .input-container {
-      display : flex;
-      background: rgb(10, 10, 10);
-      border-radius: 1rem;
-      padding: 0.3rem;
-      gap: 0.3rem;
-      max-width: 300px;
+      display: flex;
+      margin-top: 20px;
       width: 100%;
     }
 
     .input-container input {
-      border-radius: 0.8rem 0 0 0.8rem;
-      background: #e8e8e8;
-      box-shadow: inset 13px 13px 10px #dcdcdc, inset -13px -13px 10px #f4f4f4;
-      width: 100%;
-      flex-basis: 75%;
-      padding: 1rem;
+      flex: 1;
+      padding: 15px;
       border: none;
-      border-left: 2px solid #ecf2f8;
-      color: #000000;
-      transition: all 0.2s ease-in-out;
+      border-radius: 5px 0 0 5px;
+      background: #ffffff;
+      color: #333;
+      transition: background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .input-container input:focus {
-      border-left: 2px solid #ecf1f6;
+      background: #f0f0f0;
       outline: none;
-      box-shadow: inset 13px 13px 10px #f0f2f3, inset -13px -13px 10px #f4f4f4;
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
     }
 
     .input-container button {
-      flex-basis: 15%;
-      padding: 1rem;
-      background: #5935ac;
-      font-weight: 700;
-      letter-spacing: 0.3rem; /* Fixed spacing */
-      text-transform: uppercase;
-      color: white;
+      padding: 15px;
       border: none;
-      width: 90%;
-      border-radius: 0 1rem 1rem 0;
-      transition: all 0.2s ease-in-out;
+      border-radius: 0 5px 5px 0;
+      background: #00bcd4;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      font-weight: bold;
     }
 
     .input-container button:hover {
-      background: linear-gradient(135deg, #c01736 0%, #8b17b6 100%);
+      background: #0097a7;
+      transform: translateY(-2px);
     }
 
-    @media (max-width: 500px) {
-      .input-container {
-        flex-direction: column;
-      }
-
-      .input-container input {
-        border-radius: 0.8rem;
-      }
-
-      .input-container button {
-        padding: 0.4rem;
-        border-radius: 0.8rem;
-      }
-    }
-
-    .centered-text {
+    .message {
+      margin-top: 20px;
+      font-size: 1.1rem;
       text-align: center;
     }
 
-    @media (max-width: 500px) {
-      .box {
-        width: 90%; 
-      }
+    .error {
+      color: red;
     }
 
-    @media (max-width: 500px) {
-      .input-container input {
-        border-radius: 0.8rem;
-        width: 80%; 
-      }
-
-      .input-container button {
-        padding: 1rem;
-        border-radius: 0.9rem;
-        width: 100%; 
-      }
+    .success {
+      color: green;
     }
 
-    /* Footer styles */
+    .loading {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #00bcd4;
+    }
+
+    .history {
+      margin-top: 20px;
+      max-height: 100px;
+      overflow-y: auto;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 10px;
+      color: #ffffff;
+    }
+
+    .history-item {
+      margin: 5px 0;
+    }
+
     footer {
       position: absolute;
-      bottom: 10px;
-      left: 0;
+      bottom: 20px;
       width: 100%;
       text-align: center;
       color: white;
       font-weight: bold;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px 0;
+    }
+
+    .github-icon {
+      color: #00bcd4;
+      font-size: 2rem;
+      transition: color 0.3s;
+    }
+
+    .github-icon:hover {
+      color: #0097a7;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: 90%;
+      }
     }
   </style>
-  <script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-  </script>
 </head>
 <body>
-  <div class="marquee" aria-live="polite">
-    <div class="marquee-content">
-      After getting youre file please upload the file (creds.json) to youre session folder and deploy it to youre hosting site.
+  <div class="container" role="form" aria-labelledby="form-title">
+    <img src="https://via.placeholder.com/120" alt="Logo" class="logo">
+    <h1 id="form-title">Lazack Organization</h1>
+    <h6>Creds Generator</h6>
+    <h6>Enter Your Phone Number With Country Code.</h6>
+    
+    <div class="input-container">
+      <input placeholder="e.g 255734980103" type="number" id="number" aria-label="Phone number input">
+      <button id="submit" aria-label="Generate code">Generate</button>
     </div>
+    
+    <div id="loading" class="loading">Loading...</div>
+    <div id="pair" class="message"></div>
+    
+    <div class="history" aria-live="polite" id="history"></div>
+    
+    <a href="https://github.com/Lazack28/Lazack-Device" target="_blank">
+      <i class="fab fa-github github-icon" aria-label="GitHub repository link"></i>
+    </a>
   </div>
-  <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-8601119118897825">
-  </amp-auto-ads>
-  <!-- Video background -->
-  <div class="video-container">
-    <video autoplay muted loop>
-      <source src="https://nie.v.netease.com/nie/2021/0311/180bb6ea37a856240100f1adbcb86cf2qt.mp4">
-    </video>
-  </div>
-  <div class="container">
-    <div class="main">
-      <div class="box" id="box">
-        <div id="text">
-          <i class="fa fa-user"></i>
-          <p>
-            <h3 class="centered-text">PAIRING</h3>
-            <br>
-            <h6>SILVA & LAZACK PAIRING</h6>
-            <h6>Enter Your Phone Number With Country Code.</h6>
-            <div class="input-container">
-              <input placeholder="e.g 255734980103" type="number" id="number" name="">
-              <button id="submit">enter</button>
-            </div>
-            <a id="waiting-message" class="centered-text" style="display: none;">WAIT A SEC...</a>
-            <br>
-            <br>
-            <main id="pair"></main>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <footer>
+    Credit to Lazack28
+  </footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
     let a = document.getElementById("pair");
     let b = document.getElementById("submit");
     let c = document.getElementById("number");
-    let box = document.getElementById("box");
-
-    async function Copy() {
-      let text = document.getElementById("copy").innerText;
-      let obj = document.getElementById("copy");
-      await navigator.clipboard.writeText(obj.innerText.replace('YOUR CODE: ', ''));
-      obj.innerText = "COPIED";
-      obj.style = "color:blue;font-weight:bold";
-      obj.size = "5";
-      setTimeout(() => {
-        obj.innerText = text;
-        obj.style = "color:white;font-weight:bold";
-        obj.size = "5";
-      }, 500);
-    }
+    let loading = document.getElementById("loading");
+    let historyContainer = document.getElementById("history");
 
     b.addEventListener("click", async (e) => {
       e.preventDefault();
+      loading.style.display = "block"; // Show loading
+      a.innerHTML = ""; // Clear previous messages
+
       if (!c.value) {
-        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your whatsapp number with country code.</a><br><br>';
+        a.innerHTML = '<span class="error">Enter your WhatsApp number with country code.</span>';
+        loading.style.display = "none"; // Hide loading
+        return;
       } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<a style="color:white;font-weight:bold">Invalid number format</a><br><br>';
-      } else {
-        const bc = c.value.replace(/[^0-9]/g, "");
-        let bb = "";
-        let bbc = "";
-        const cc = bc.split('');
-        cc.map(a => {
-          bbc += a;
-          if (bbc.length == 3) {
-            bb += " " + a;
-          } else if (bbc.length == 8) {
-            bb += " " + a;
-          } else {
-            bb += a;
-          }
-        });
-        c.type = "text";
-        c.value = "+" + bb;
-        c.style = "color:black;font-size:20px";
-        a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
+        a.innerHTML = '<span class="error">Invalid number format</span>';
+        loading.style.display = "none"; // Hide loading
+        return;
+      }
+
+      const bc = c.value.replace(/[^0-9]/g, "");
+      c.value = "+" + bc; // Format the number
+      a.innerHTML = '<span class="loading">Please Wait...</span>';
+
+      try {
         let { data } = await axios(`/code?number=${bc}`);
         let code = data.code || "Service is Unavailable";
-        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">YOUR CODE: <span style="color:blue;font-weight:bold">' + code + '</span></font><br><br><br>';
+        a.innerHTML = `<span class="success">YOUR CODE: <strong>${code}</strong></span>`;
+        
+        // Add to history
+        let historyItem = document.createElement("div");
+        historyItem.className = "history-item";
+        historyItem.textContent = `Generated Code for ${c.value}: ${code}`;
+        historyContainer.appendChild(historyItem);
+      } catch (error) {
+        a.innerHTML = '<span class="error">An error occurred. Please try again.</span>';
+      } finally {
+        loading.style.display = "none"; // Hide loading
       }
     });
   </script>
-  <footer>
-    Credit to Lazack28
-  </footer>
 </body>
-</html>
+    </html>
+  
