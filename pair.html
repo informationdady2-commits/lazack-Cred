@@ -5,150 +5,213 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/016e29eeceab76949bdc3.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Lazack Organization Creds Generator</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #00bcd4;
-      --secondary-color: #0097a7;
-      --background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+      --primary: #00e5ff;
+      --secondary: #00bcd4;
+      --background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      --glass: rgba(255, 255, 255, 0.05);
+      --text: rgba(255, 255, 255, 0.95);
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      margin: 0;
-      padding: 20px;
       background: var(--background);
-      font-family: 'Roboto', sans-serif;
-      color: #f1f1f1;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      padding: 1rem;
     }
 
     .container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(15px);
-      max-width: 500px;
       width: 100%;
+      max-width: 480px;
       margin: auto;
-      position: relative;
+      padding: 2rem;
+      background: var(--glass);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-4px);
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
     .logo {
-      width: 100px;
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
       margin-bottom: 1.5rem;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 24px rgba(0, 229, 255, 0.2);
     }
 
     h1 {
-      font-size: clamp(1.5rem, 5vw, 2rem);
-      color: var(--primary-color);
-      margin: 0 0 0.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
       text-align: center;
-      text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    h6 {
-      font-size: clamp(0.8rem, 3vw, 1rem);
-      color: #ffffff;
-      margin: 0 0 1.5rem;
+    .subtitle {
       text-align: center;
-      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
     }
 
-    .input-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 1rem;
-      margin: 1rem 0;
+    .input-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     input {
       width: 100%;
-      padding: 12px 15px;
-      border: none;
-      border-radius: 8px;
-      background: #ffffff;
-      color: #333;
+      padding: 1rem 1rem 1rem 3rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: var(--text);
       font-size: 1rem;
-      transition: box-shadow 0.3s;
+      transition: all 0.3s ease;
     }
 
     input:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.2);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     button {
       width: 100%;
-      padding: 12px;
+      padding: 1rem;
+      background: var(--primary);
+      color: #000;
       border: none;
-      border-radius: 8px;
-      background: var(--primary-color);
-      color: #fff;
+      border-radius: 12px;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
 
     button:hover {
-      background: var(--secondary-color);
+      background: var(--secondary);
       transform: translateY(-2px);
-    }
-
-    .message {
-      width: 100%;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-      text-align: center;
-    }
-
-    .error {
-      background: rgba(255, 0, 0, 0.1);
-      color: #ff4444;
-    }
-
-    .success {
-      background: rgba(0, 255, 0, 0.1);
-      color: #00C851;
+      box-shadow: 0 4px 16px rgba(0, 229, 255, 0.3);
     }
 
     .loading {
       display: none;
-      color: var(--primary-color);
+      text-align: center;
+      padding: 1rem;
+      color: var(--primary);
+    }
+
+    .loading::after {
+      content: "";
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 8px;
       margin: 1rem 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .success {
+      background: rgba(0, 255, 150, 0.1);
+      border: 1px solid rgba(0, 255, 150, 0.2);
+      color: #00ff96;
+    }
+
+    .error {
+      background: rgba(255, 50, 50, 0.1);
+      border: 1px solid rgba(255, 50, 50, 0.2);
+      color: #ff3232;
+    }
+
+    .github-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .github-icon {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .github-icon:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-    }
-
-    .github-icon {
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      transition: color 0.3s;
+      padding: 2rem 1rem 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.8rem;
     }
 
     @media (max-width: 480px) {
       .container {
         padding: 1.5rem;
-        border-radius: 15px;
+        border-radius: 20px;
       }
 
       input, button {
@@ -158,27 +221,36 @@
   </style>
 </head>
 <body>
-  <div class="container" role="form" aria-labelledby="form-title">
-    <img src="https://via.placeholder.com/120" alt="Logo" class="logo">
-    <h1 id="form-title">Lazack Organization</h1>
-    <h6>Creds Generator</h6>
-    <h6>Enter Your Phone Number With Country Code</h6>
-    
-    <div class="input-container">
-      <input placeholder="Example: 255734980103" type="number" id="number" aria-label="Phone number input">
-      <button id="submit" aria-label="Generate code">Generate</button>
+  <div class="container">
+    <div class="logo-container">
+      <img src="https://via.placeholder.com/120" alt="Logo" class="logo">
+      <h1>Lazack Organization</h1>
+      <p class="subtitle">Creds Generator</p>
+      <p class="subtitle">Enter your phone number with country code</p>
     </div>
-    
-    <div id="loading" class="loading">Loading...</div>
+
+    <div class="input-group">
+      <i class="fas fa-mobile-alt input-icon"></i>
+      <input type="tel" id="number" placeholder="Example: 255734980103" aria-label="Phone number input">
+    </div>
+
+    <button id="submit">
+      <i class="fas fa-key"></i>
+      Generate Code
+    </button>
+
+    <div id="loading" class="loading"></div>
     <div id="pair" class="message"></div>
-    
-    <a href="https://github.com/Lazack28/Lazack-Device" target="_blank" aria-label="GitHub repository">
-      <i class="fab fa-github github-icon"></i>
-    </a>
+
+    <div class="github-link">
+      <a href="https://github.com/Lazack28/Lazack-Device" target="_blank" aria-label="GitHub repository">
+        <i class="fab fa-github github-icon"></i>
+      </a>
+    </div>
   </div>
 
   <footer>
-    Credit to Lazack28 • © 2025 All rights reserved
+    Credit to Lazack28 • © 2023 All rights reserved
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
@@ -191,8 +263,8 @@
     submitButton.addEventListener("click", async (e) => {
       e.preventDefault();
       loadingElement.style.display = "block";
-      pairElement.innerHTML = "";
-
+      pairElement.classList.remove("visible");
+      
       const rawNumber = numberInput.value.replace(/\D/g, "");
       
       if (!rawNumber) {
@@ -205,19 +277,19 @@
         return;
       }
 
-      numberInput.value = `+${rawNumber}`;
-
       try {
         const { data } = await axios.get(`/code?number=${rawNumber}`);
         const code = data.code || "Service unavailable";
         
         pairElement.innerHTML = `
           <div class="success">
+            <i class="fas fa-check-circle"></i>
             YOUR CODE: <strong>${code}</strong>
           </div>
         `;
+        pairElement.classList.add("visible");
       } catch (error) {
-        showError("Failed to generate code. Please try again.");
+        showError("<i class='fas fa-times-circle'></i> Failed to generate code. Please try again.");
       } finally {
         loadingElement.style.display = "none";
       }
@@ -225,8 +297,9 @@
 
     function showError(message) {
       pairElement.innerHTML = `<div class="error">${message}</div>`;
+      pairElement.classList.add("visible");
       loadingElement.style.display = "none";
     }
   </script>
 </body>
-</html>
+        </html>
