@@ -65,7 +65,36 @@ router.get('/', async (req, res) => {
                     });
 
                     await sock.sendMessage(sock.user.id, {
-                        text: `*THE ULITMATE CREDS.JSON GENERATOR*\n*you have used pairing method*\n> YOU HAVE SUCCESSFULLY COMPLETED YOUR FIRST STEP\n> NOW UPLOAD YOUR CREDS.JSON ON YOUR FORKED BOT GITHUB REPO\n____________________________________\n╔════◇\n║『 𝘿𝙀𝙑𝙀𝙇𝙊𝙋𝙀𝙍』\n\n║ ❒ LAZACK: _https://wa.me/255734980103_\n║ ❒ SILVA: _https://wa.me/254743706010_\n\n╚════════════════════❒\n╔═════◇\n║ 『••• OWNER INFO •••』\n║ ❒ LAZACK: _https://wa.me/255734980103_\n║ ❒ SILVA: _https://wa.me/254700143167_\n> fork the following repo\n║ ❒ Repo 1: _https://github.com/Lazack28/Lazack-md_\n║ ❒ Repo 2: _https://github.com/SilvaTechB/silva-md-bot_\n╚════════════════════╝ \n*lazack tech*\n*silva tech inc*\n___________________________________`,
+                        text: `🚀 *CREDS.JSON GENERATION SUCCESSFUL* 🚀
+
+▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
+✅ *STEP COMPLETED:* Pairing Process
+🌌 *NEXT PHASE:* Deployment Sequence
+
+📥 *ACTION REQUIRED:*
+   ⇝ Upload creds.json to your forked repository
+   ⇝ Activate your bot instance
+
+🔧 *TECH SUPPORT:*
+   ⌬ Developer: LAZACK
+   ☎ Contact: _https://wa.me/255734980103_
+   ⎔ Repo: _https://github.com/Lazack28/Lazack-md_
+
+▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
+
+💡 *LAZACK ORGANIZATION PROTOCOL*
+» Emerging tech collective
+» Open-source innovation hub
+» Focus: AI/ML | Automation | Dev Tools
+» Mission: "Empower through code"
+
+🔗 *JOIN DEVELOPMENT NETWORK:*
+_https://chat.whatsapp.com/EATTgyi5jx16HgAggPg8yI_
+
+⚠️ _Keep credentials secure_
+⚠️ _Maintain fork regularly_
+▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
+*[System ID: LAZACK-MD-v${version.join('.')}]*`
                     }, { quoted: sockses });
 
                     await delay(100);
