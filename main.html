@@ -1,155 +1,204 @@
-<!<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://imgur.com/0WdquLe">
-  <link rel="shortcut icon" type="x-icon" href="./img/bg.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8601119118897825" crossorigin="anonymous"></script>
+  <meta name="theme-color" content="#0a0e17">
+  <link rel="icon" type="image/png" href="https://example.com/favicon.png">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
+    :root {
+      --primary: #00f7ff;
+      --secondary: #1e3a78;
+      --bg: #0a0e17;
+      --glass: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Roboto', 'Segoe UI', sans-serif;
-      color: white;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      min-height: 100vh;
+      padding: 2rem;
+      position: relative;
     }
 
-    /* Video background */
     .video-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
       z-index: -1;
+      overflow: hidden;
+      background: linear-gradient(45deg, var(--bg) 30%, rgba(10, 14, 23, 0.8));
     }
 
     video {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Cover the entire area */
+      object-fit: cover;
+      mix-blend-mode: screen;
+      opacity: 0.15;
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: fadeInUp 1s forwards;
-      animation-delay: 0.5s; /* Delay for the welcome message */
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, var(--primary), #00b4d8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: textFloat 3s ease-in-out infinite;
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem 0;
     }
 
     .btn {
-      width: 220px;
-      padding: 15px;
-      margin: 10px 0;
-      background-color: #1e3a78; /* Blue-black color */
+      padding: 1.25rem;
       border: none;
-      border-radius: 5px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
       color: white;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.5s forwards;
-    }
-
-    .btn.visible {
-      opacity: 1;
-      transform: translateY(0);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .btn:hover {
-      background-color: #0f2a5b; /* Darker shade on hover */
+      background: rgba(255, 255, 255, 0.1);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 247, 255, 0.1);
     }
 
     .btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      transform: translateY(0);
     }
 
-    /* Footer styles */
+    .btn i {
+      font-size: 1.3em;
+    }
+
     footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      color: white;
-      font-size: 14px;
-      opacity: 0.7;
+      position: fixed;
+      bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      .btn {
-        width: 90%;
-      }
+    @keyframes textFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
 
-      h1 {
-        font-size: 2em;
+    @media (max-width: 768px) {
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .btn {
+        width: 100%;
       }
     }
   </style>
-  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 </head>
 <body>
-  <amp-auto-ads type="adsense" data-ad-client="ca-pub-8601119118897825"></amp-auto-ads>
-  
-  <!-- Video background -->
-  <div class="video-container">
-      <video autoplay muted loop>
-          <source src="https://nie.v.netease.com/nie/2021/0311/180bb6ea37a856240100f1adbcb86cf2qt.mp4">
+  <div class="container">
+    <div class="video-container">
+      <video autoplay muted loop playsinline>
+        <source src="https://nie.v.netease.com/nie/2021/0311/180bb6ea37a856240100f1adbcb86cf2qt.mp4" type="video/mp4">
       </video>
+    </div>
+
+    <h1>Pairing Platform</h1>
+
+    <div class="button-grid">
+      <button class="btn" onclick="window.open('/pair')">
+        <i class="fas fa-link"></i>
+        Pair Device
+      </button>
+      
+      <button class="btn" onclick="window.open('https://github.com/Lazack28')">
+        <i class="fab fa-github"></i>
+        Developer Profile
+      </button>
+
+      <button class="btn" onclick="window.open('https://t.me/hackersreality')">
+        <i class="fab fa-telegram"></i>
+        Community Chat
+      </button>
+
+      <button class="btn" onclick="window.open('https://chat.whatsapp.com/')">
+        <i class="fab fa-whatsapp"></i>
+        WhatsApp Group
+      </button>
+    </div>
+
+    <footer>
+      Lazack Development &copy; 2025 | Secure Pairing System
+    </footer>
   </div>
-
-  <h1>Welcome to our Pairing Page </h1>
-
-  <div id="button-container">
-    <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
-    <button onclick="window.open(`https://github.com/Lazack28`)" class="btn">Lazack</button>
-    <button onclick="window.open(`https://github.com/SilvaTechB`)" class="btn">Silva</button>
-    <button onclick="window.open(`https://t.me/hackersreality`)" class="btn">Telegram</button>
-    <button onclick="window.open(`https://chat.whatsapp.com/`)" class="btn">Group</button>
-  </div>
-
-  <footer>
-    Lazack Devs
-  </footer>
 
   <script>
-    const buttons = document.querySelectorAll('.btn');
-    const welcomeMessageDuration = 10000; // 10 seconds
-    const buttonDisplayInterval = 3000; // 3 seconds
-
-    // Show welcome message for 10 seconds
-    setTimeout(() => {
-      buttons.forEach((button, index) => {
-        setTimeout(() => {
-          button.classList.add('visible');
-        }, index * buttonDisplayInterval);
+    // Modern intersection observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
       });
-    }, welcomeMessageDuration);
+    });
+
+    document.querySelectorAll('.btn, h1').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      observer.observe(el);
+    });
+
+    // Service worker registration for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered:', registration);
+          })
+          .catch(error => {
+            console.log('SW registration failed:', error);
+          });
+      });
+    }
   </script>
 </body>
-</html>
+  </html>
