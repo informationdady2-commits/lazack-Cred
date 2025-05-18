@@ -3,157 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/016e29eeceab76949bdc3.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Lazack Organization Creds Generator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #00bcd4;
+      --secondary-color: #0097a7;
+      --background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      flex-direction: column;
+      min-height: 100vh;
       margin: 0;
-      background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+      padding: 20px;
+      background: var(--background);
       font-family: 'Roboto', sans-serif;
       color: #f1f1f1;
-      overflow: hidden;
     }
 
     .container {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      padding: 40px;
+      padding: 2rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(15px);
-      transition: transform 0.3s;
       max-width: 500px;
-      width: 90%;
-    }
-
-    .container:hover {
-      transform: scale(1.05);
+      width: 100%;
+      margin: auto;
+      position: relative;
     }
 
     .logo {
-      width: 120px;
-      margin-bottom: 20px;
+      width: 100px;
+      margin-bottom: 1.5rem;
     }
 
     h1 {
-      font-size: 2.5rem;
-      color: #00bcd4;
-      margin: 0;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: var(--primary-color);
+      margin: 0 0 0.5rem;
       text-align: center;
       text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
     }
 
     h6 {
-      font-size: 1rem;
+      font-size: clamp(0.8rem, 3vw, 1rem);
       color: #ffffff;
-      margin-bottom: 10px;
+      margin: 0 0 1.5rem;
       text-align: center;
+      line-height: 1.4;
     }
 
     .input-container {
       display: flex;
-      margin-top: 20px;
+      flex-direction: column;
       width: 100%;
+      gap: 1rem;
+      margin: 1rem 0;
     }
 
-    .input-container input {
-      flex: 1;
-      padding: 15px;
+    input {
+      width: 100%;
+      padding: 12px 15px;
       border: none;
-      border-radius: 5px 0 0 5px;
+      border-radius: 8px;
       background: #ffffff;
       color: #333;
-      transition: background 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      font-size: 1rem;
+      transition: box-shadow 0.3s;
     }
 
-    .input-container input:focus {
-      background: #f0f0f0;
+    input:focus {
       outline: none;
-      box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+      box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
     }
 
-    .input-container button {
-      padding: 15px;
+    button {
+      width: 100%;
+      padding: 12px;
       border: none;
-      border-radius: 0 5px 5px 0;
-      background: #00bcd4;
+      border-radius: 8px;
+      background: var(--primary-color);
       color: #fff;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      font-size: 1rem;
       font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
     }
 
-    .input-container button:hover {
-      background: #0097a7;
+    button:hover {
+      background: var(--secondary-color);
       transform: translateY(-2px);
     }
 
     .message {
-      margin-top: 20px;
-      font-size: 1.1rem;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
       text-align: center;
     }
 
     .error {
-      color: red;
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff4444;
     }
 
     .success {
-      color: green;
+      background: rgba(0, 255, 0, 0.1);
+      color: #00C851;
     }
 
     .loading {
       display: none;
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: #00bcd4;
-    }
-
-    .history {
-      margin-top: 20px;
-      max-height: 100px;
-      overflow-y: auto;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 10px;
-      color: #ffffff;
-    }
-
-    .history-item {
-      margin: 5px 0;
+      color: var(--primary-color);
+      margin: 1rem 0;
     }
 
     footer {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
       text-align: center;
-      color: white;
-      font-weight: bold;
+      padding: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
     }
 
     .github-icon {
-      color: #00bcd4;
-      font-size: 2rem;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-top: 1rem;
       transition: color 0.3s;
     }
 
-    .github-icon:hover {
-      color: #0097a7;
-    }
-
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
       .container {
-        width: 90%;
+        padding: 1.5rem;
+        border-radius: 15px;
+      }
+
+      input, button {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -163,71 +162,71 @@
     <img src="https://via.placeholder.com/120" alt="Logo" class="logo">
     <h1 id="form-title">Lazack Organization</h1>
     <h6>Creds Generator</h6>
-    <h6>Enter Your Phone Number With Country Code.</h6>
+    <h6>Enter Your Phone Number With Country Code</h6>
     
     <div class="input-container">
-      <input placeholder="e.g 255734980103" type="number" id="number" aria-label="Phone number input">
+      <input placeholder="Example: 255734980103" type="number" id="number" aria-label="Phone number input">
       <button id="submit" aria-label="Generate code">Generate</button>
     </div>
     
     <div id="loading" class="loading">Loading...</div>
     <div id="pair" class="message"></div>
     
-    <div class="history" aria-live="polite" id="history"></div>
-    
-    <a href="https://github.com/Lazack28/Lazack-Device" target="_blank">
-      <i class="fab fa-github github-icon" aria-label="GitHub repository link"></i>
+    <a href="https://github.com/Lazack28/Lazack-Device" target="_blank" aria-label="GitHub repository">
+      <i class="fab fa-github github-icon"></i>
     </a>
   </div>
 
   <footer>
-    Credit to Lazack28
+    Credit to Lazack28 • © 2025 All rights reserved
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
-    let a = document.getElementById("pair");
-    let b = document.getElementById("submit");
-    let c = document.getElementById("number");
-    let loading = document.getElementById("loading");
-    let historyContainer = document.getElementById("history");
+    const pairElement = document.getElementById("pair");
+    const submitButton = document.getElementById("submit");
+    const numberInput = document.getElementById("number");
+    const loadingElement = document.getElementById("loading");
 
-    b.addEventListener("click", async (e) => {
+    submitButton.addEventListener("click", async (e) => {
       e.preventDefault();
-      loading.style.display = "block"; // Show loading
-      a.innerHTML = ""; // Clear previous messages
+      loadingElement.style.display = "block";
+      pairElement.innerHTML = "";
 
-      if (!c.value) {
-        a.innerHTML = '<span class="error">Enter your WhatsApp number with country code.</span>';
-        loading.style.display = "none"; // Hide loading
-        return;
-      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<span class="error">Invalid number format</span>';
-        loading.style.display = "none"; // Hide loading
+      const rawNumber = numberInput.value.replace(/\D/g, "");
+      
+      if (!rawNumber) {
+        showError("Please enter a valid phone number");
         return;
       }
 
-      const bc = c.value.replace(/[^0-9]/g, "");
-      c.value = "+" + bc; // Format the number
-      a.innerHTML = '<span class="loading">Please Wait...</span>';
+      if (rawNumber.length < 11) {
+        showError("Number must be at least 11 digits");
+        return;
+      }
+
+      numberInput.value = `+${rawNumber}`;
 
       try {
-        let { data } = await axios(`/code?number=${bc}`);
-        let code = data.code || "Service is Unavailable";
-        a.innerHTML = `<span class="success">YOUR CODE: <strong>${code}</strong></span>`;
+        const { data } = await axios.get(`/code?number=${rawNumber}`);
+        const code = data.code || "Service unavailable";
         
-        // Add to history
-        let historyItem = document.createElement("div");
-        historyItem.className = "history-item";
-        historyItem.textContent = `Generated Code for ${c.value}: ${code}`;
-        historyContainer.appendChild(historyItem);
+        pairElement.innerHTML = `
+          <div class="success">
+            YOUR CODE: <strong>${code}</strong>
+          </div>
+        `;
       } catch (error) {
-        a.innerHTML = '<span class="error">An error occurred. Please try again.</span>';
+        showError("Failed to generate code. Please try again.");
       } finally {
-        loading.style.display = "none"; // Hide loading
+        loadingElement.style.display = "none";
       }
     });
+
+    function showError(message) {
+      pairElement.innerHTML = `<div class="error">${message}</div>`;
+      loadingElement.style.display = "none";
+    }
   </script>
 </body>
-    </html>
-  
+</html>
