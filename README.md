@@ -46,6 +46,8 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-Developer: Lazackdevs (Team Lazack)  
+Developer: Lazackdevs
+
 [Email](lazaromtaju12@gmail.com)
+
 [GitHub](https://github.com/Lazack28)
