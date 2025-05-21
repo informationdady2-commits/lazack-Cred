@@ -1,6 +1,8 @@
 # Lazack Cred
 
-Live Demo: https://lazack-cred.onrender.com
+Live Demo: 
+
+https://lazack-cred.onrender.com
 
 ## Overview
 
@@ -15,7 +17,7 @@ Lazack Cred is a web application developed by Lazack28, designed to offer a user
 ## Technologies Used
 
 - Frontend: HTML, CSS, JavaScript
-- Backend: Node.js (assumed)
+- Backend: No backend used
 - Hosting: Render.com
 
 ## Getting Started
@@ -23,15 +25,19 @@ Lazack Cred is a web application developed by Lazack28, designed to offer a user
 To run the project locally:
 
 1. Clone the repository:
+   ```
    git clone https://github.com/Lazack28/lazack-cred.git
 
-2. Navigate to the project directory:
+3. Navigate to the project directory:
+   ```
    cd lazack-cred
 
-3. Install dependencies:
+5. Install dependencies:
+   ```
    npm install
 
-4. Start the server:
+7. Start the server:
+   ```
    npm start
 
 ## License
@@ -40,6 +46,6 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-Developer: Lazack28  
-Email: lazaromtaju12@gmail.com  
-GitHub: https://github.com/Lazack28
+Developer: Lazackdevs (Team Lazack)  
+(Email)[lazaromtaju12@gmail.com] 
+(GitHub)[https://github.com/Lazack28]
